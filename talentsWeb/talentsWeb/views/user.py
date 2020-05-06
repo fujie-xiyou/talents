@@ -1,10 +1,8 @@
 import re
 
 from talentsWeb.models import User
-from talentsWeb.utils.MongoAI import getNextSequence
 from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
 from talentsWeb.utils.FPExceptions import FormException
-from mongoengine import DoesNotExist
 
 
 @request_decorator
@@ -18,8 +16,8 @@ def login(request, form_data):
     if not password:
         raise FormException('密码为空')
     try:
-        db_user = User.objects.get(username=username).to_mongo().to_dict()
-    except DoesNotExist:
+        db_user = User.objects.values().get(username=username)
+    except User.DoesNotExist:
         raise FormException('用户不存在')
     if db_user.get('password') != password:
         raise FormException('密码错误')
@@ -50,8 +48,7 @@ def register(request, form_data):
     db_user = User.objects.filter(username=username).all()
     if len(db_user) > 0:
         raise FormException('用户名已被使用')
-    user_id = getNextSequence(User.__name__)
-    user = User(user_id=user_id, username=username, phone=phone, email=email, password=password)
+    user = User(username=username, phone=phone, email=email, password=password)
     try:
         user.save()
         return "注册成功"
