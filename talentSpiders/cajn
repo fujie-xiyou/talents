@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>中国学术期刊（网络版）CAJ-N--中国知网</title>
+
+    <link href="/cajn/Content/css2/css?v=fSnFeWsUE_smXTqzkP_A8IIVKEyRdqMGpOZxt-2GheY1" rel="stylesheet"/>
+
+    <script src="/cajn/bundles/jquery?v=3kjk9pxULgtc4Rd35WWn2fHx046Y4Xykh315P1d8exk1"></script>
+
+    <script src="/cajn/bundles/home?v=cIdgHSWN7XJ-Xe7gaPtzLv12bzQZdJc5YQWHcq7DrEM1"></script>
+
+
+</head>
+<body class="section1">
+      <!--header start-->
+<div class="header">
+    <div class="head-main">
+        <a class="link-home" href="http://www.cnki.net"></a>
+        <div class="head-right">
+            <ul class="login-btns">
+                <li class="login"><a class="btn-login" target="_self" href="http://kns.cnki.net/kns/logindigital.aspx?ParentLocation=http://www.cnki.net">登录</a></li>
+                <li class="register"><a class="btn-register" target="_blank" href="http://my.cnki.net/elibregister/commonRegister.aspx">注册</a></li>
+            </ul>
+
+            <ul class="link-list">
+                <li><a href="http://m.cnki.net/mcnkidown/index.html" target="_blank">手机版</a></li>
+                <li><a href="http://oversea.cnki.net" target="_blank">English</a></li>
+                <li><a href="http://www.cnki.net/old" target="_blank">旧版入口</a></li>
+
+                <li><a href="http://kns.cnki.net/kns/subPage/map.aspx" target="_blank">网站地图</a></li>
+                <!--<li><a href="http://kns.cnki.net/kns/subPage/Total.aspx" target="_blank">CNKI产品</a></li>-->
+                <li><a href="http://service.cnki.net/helpcenter/" target="_blank">帮助中心</a></li>
+                <li><a href="http://vipcard.cnki.net/ec/skwd/skwd.htm" target="_blank">购买知网卡</a></li>
+                <li><a href="http://zhifu.cnki.net/" target="_blank">充值中心</a></li>
+                <li><a href="http://elib.cnki.net/" target="_blank">个人/机构馆</a></li>
+                <!--<li><a href="http://cnki.net/gycnki/gycnki.htm" target="_blank">关于我们</a></li>-->
+            </ul>
+        </div>
+        <!--head-right-->
+    </div>
+    <!--head-main-->
+</div>
+<!--header end-->
+
+    
+
+
+   
+    <!--searchmain start-->
+    <div class="searchmain">
+        <div class="tip">
+            <h1>中国学术期刊（网络版）CAJ-N</h1>
+            <h2><b>Chinese Academic Journal (Network Edition)</b>CN&nbsp;&nbsp;11-6037/Z&nbsp;&nbsp;&nbsp;ISSN&nbsp;&nbsp;2096-4188</h2>
+            <h3>选刊投稿（首发方式）：<a href="http://www.cb.cnki.net/journal/Search.aspx?pm=1" target="_blank">网络</a><a href="http://www.cb.cnki.net/journal/Search.aspx?pm=2 " target="_blank">印刷</a><a href="http://www.cb.cnki.net/journal/Search.aspx?pm=3" target="_blank">全部</a></h3>
+        </div>
+        <ul class="search-tab">
+            <li class="on" val="doc">文献检索</li>
+            <li val="ele">知识元检索</li>
+            <li val="ref">引文检索</li>
+        </ul>
+        <div class="search-form">
+            <input type="hidden" id="curdbcode" name="curdbcode" value="CJFQ" />
+
+            <div class="input-box">
+                <div class="sort reopt" id="DBFieldBox">
+                    <div class="sort-default">
+                        <span>主题</span>
+                        <i class="sort-icon">▼</i>
+                    </div>
+                    <ul class="sort-list" id="DBFieldList">
+                        <li class="cur" val="0"><a href="javascript:void(0);">主题</a></li>
+                        <li val="1"><a href="javascript:void(0);">关键词</a></li>
+                        <li val="2"><a href="javascript:void(0);">篇名</a></li>
+                        <li val="3"><a href="javascript:void(0);">全文</a></li>
+                        <li val="4"><a href="javascript:void(0);">作者</a></li>
+                        <li val="5"><a href="javascript:void(0);">单位</a></li>
+                        <li val="6"><a href="javascript:void(0);">刊名</a></li>
+                        <li val="7"><a href="javascript:void(0);">ISSN</a></li>
+                        <li val="8"><a href="javascript:void(0);">CN</a></li>
+                        <li val="9"><a href="javascript:void(0);">基金</a></li>
+                        <li val="10"><a href="javascript:void(0);">摘要</a></li>
+                        <li val="11"><a href="javascript:void(0);">被引文献</a></li>
+                        <li val="12"><a href="javascript:void(0);">中图分类号</a></li>
+                        <li val="13"><a href="javascript:void(0);">DOI</a></li>
+                        <li val="14"><a href="javascript:void(0);">栏目信息</a></li>
+                    </ul>
+                </div><!--sort-->
+                <input class="search-input" id="txt_SearchText" type="text" autocomplete="off" placeholder="中文文献、外文文献（Elsevier、Springer、Wiley......）" value="中文文献、外文文献（Elsevier、Springer、Wiley......）" maxlength="100" />
+                <input class="search-btn" type="button" value="">
+            </div><!--input-box-->
+
+            <div class="readvce">
+                <a href="http://nvsm.cnki.net/kns/brief/result.aspx?dbprefix=CJFQ" target="_blank" id="highSearch">高级检索</a>
+                <a href="http://navi.cnki.net/KNavi/Journal.html " target="_blank">期刊检索</a>
+            </div>
+
+            <div class="option-list">
+                <p class="wx">中国学术期刊（网络版）& 中国学术期刊网络出版总库</p>
+                <ul class="zsy">
+                    <li class="selected" id="qa" val="qa" onclick="SingleDb(this)">
+                        <span>知识问答</span><a class="icon" href="http://qa.cnki.net/web/query?q=" target="_blank"></a>
+                    </li>
+                    <li id="IMAGE" val="IMAGE" onclick="SingleDb(this)"><span>图片</span><a class="icon" href="http://nvsm.cnki.net/kns/brief/result.aspx?dbprefix=IMAGE" target="_blank"></a></li>
+                </ul>
+                <ul class="yw">
+                    <li id="ywk" class="selected" onclick="LinkDb(this,'http://ref.cnki.net/ref')"><span>中国引文数据库</span><a class="icon"></a></li>
+                </ul>
+            </div>
+        </div><!--search-form-->
+    </div>
+    <!--searchmain end-->
+
+    <div class="main">
+        <!--导航-->
+        <div class="sidebar-a nav">
+            <div class="item">
+                <span class="wrap">学科导航</span>
+                <ul class="qk-tabs">
+                    <li id="netJournal"><span>优先出版</span></li>
+                    <li id="printJournal"><span>印后上网</span></li>
+                    <li id="allJournal"><span>全部</span></li>
+                </ul>
+            </div>
+
+            <ul class="contentbox no-childlist" id="classCategoryUl" style="display: block;" type="All"></ul>
+        </div>
+        <!--end--nav-->
+
+        <div class="doc">
+
+            <div id="cajnBox">
+                <div class="caption caj-n-caption">
+                    <span>网络首发期刊</span>
+                    <a class="anchor-hotspot" href="#hotspot-list" style="display:none;">本月学术热点</a>
+                </div>
+
+                <h1>中国学术期刊（网络版）(CAJ-N)网络首发期刊（<span id="totalJournalCnt">1446</span>种）</h1>
+                <ul class="qk-list module-list" id="cajnJournalUl">
+                    <li class="zjJournal" code="A" zjname="基础科学">
+                        <h6>基础科学（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="B?+C" zjname="工程科技">
+                        <h6>工程科技（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="D" zjname="农业科技">
+                        <h6>农业科技（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="E" zjname="医药卫生科技">
+                        <h6>医药卫生科技（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="F" zjname="哲学与人文科学">
+                        <h6>哲学与人文科学（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="G?+H" zjname="社会科学">
+                        <h6>社会科学（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="I" zjname="信息科技">
+                        <h6>信息科技（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                    <li class="zjJournal" code="J" zjname="经济与管理科学">
+                        <h6>经济与管理科学（<span class="zjJournalCnt"></span>种）</h6>
+                        <div></div>
+                        <a href="javascript:void(0);" class="more" title="查看更多">更多···</a>
+                    </li>
+                </ul><!--module-list-->
+            </div>
+            <input type="hidden" id="curCajnZjcode" value=""/>
+            <input type="hidden" id="curCajnZjName" value="" />
+
+            <div id="moreCajnBox" style="display:none;"></div>
+            <div id="otherBox" style="display:none;">
+                
+            </div>
+
+        <div id="hotworsDiv" style="display:none;">
+            
+        </div>
+
+        </div><!--doc-->
+    </div><!--main-->
+    
+
+    <script type="text/javascript">
+        var sugpath = "http://search.cnki.net";
+        LoadScript('/cajn/Scripts/cnkisug.js', function () { sugPara.IsTopK = true; sugPara.IsExp = true; sugPara.IsAttr = false; InitSug('http://search.cnki.net'); });
+    </script>
+
+    <div id="__droplist" class="dictdiv"></div>
+    <script type="text/javascript" id="TopWords_Request" src="http://search.cnki.net/sug/topk.ashx?jsonvar=top_Words_Json&amp;v=1507789236929&amp;td=1507789236929" charset="utf-8"></script>
+<script type="text/javascript">
+    //执行
+    $(document).ready(function () {
+        CAJN.Home.load();
+    });
+</script>
+
+    <input id="hidVirtualPath" name="hidVirtualPath" type="hidden" value="/cajn" />
+
+    <!--footer begin-->
+      <!--footer start-->
+<div class="footer">
+
+    <div class="foot-top">
+        <ul class="content">
+            <li>
+                <b>读者服务</b>
+                <a target="_blank" href="http://vipcard.cnki.net/ec/skwd/skwd.htm">购买知网卡</a>
+                <a target="_blank" href="http://zhifu.cnki.net/">充值中心</a>
+                <a target="_blank" href="http://my.cnki.net/">我的CNKI</a>
+                <a target="_blank" href="http://service.cnki.net/helpcenter/">帮助中心</a>
+            </li>
+            <li>
+                <b>CNKI常用软件下载</b>
+                <a target="_blank" href="http://cajviewer.cnki.net">CAJViewer浏览器</a>
+                <a target="_blank" href="http://www.cnki.net/software/xzydq.htm#CNKIe-Learning">CNKI数字化学习平台</a>
+                <a target="_blank" href="http://refbook.cnki.net/download.html">工具书桌面检索软件</a>
+            </li>
+            <li>
+                <b>特色服务</b>
+                <a target="_blank" href="http://wap.cnki.net/">手机知网</a>
+                <a target="_blank" href="http://wuxizazhi.cnki.net/">杂志订阅</a>
+                <a target="_blank" href="http://mall.cnki.net/">数字出版物订阅</a>
+                <a target="_blank" href="http://ad.cnki.net/index.aspx">广告服务</a>
+            </li>
+            <li>
+                <b>客服咨询</b>
+                <span>订卡热线：400-819-9993</span>
+                <span>服务热线：400-810-9888</span>
+                <span>在线咨询：<a target="_blank" href="http://help.cnki.net">help.cnki.net</a></span>
+                <span>邮件咨询：<a target="_blank" href="mailto:help@cnki.net">help@cnki.net</a></span>
+            </li>
+            <li class="weibo">
+                <a target="_blank" href="http://e.weibo.com/u/3059308095">
+                    <img src="http://piccache.cnki.net/kdn/index/kns7/nimages/logo_xl.png" alt="新浪微博客服">
+                    <span>新浪微博客服</span>
+                </a>
+                <a target="_blank" href="http://t.qq.com/CNKI_kefu">
+                    <img src="http://piccache.cnki.net/kdn/index/kns7/nimages/logo_tx.png" alt="腾讯微博客服">
+                    <span>腾讯微博客服</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="foot-bot clearfix">
+        <div class="t">
+            <img src="http://piccache.cnki.net/kdn/index/kns7/nimages/foot-logo.png" alt="中国知网">
+            <p class="mid">
+                <span>
+                    <a target="_blank" href="http://cnki.net/gycnki/gycnki.htm">关于我们</a>
+                    <a target="_blank" href="http://www.cnki.net/other/gonggao/gongsirongyu.html">CNKI 荣誉</a>
+                    <a target="_blank" href="http://www.cnki.net/other/gonggao/bqsm.htm">版权公告</a>
+                    <a target="_blank" href="http://service.cnki.net/">客服中心</a>
+                    <a target="_blank" href="http://help.cnki.net/">在线咨询</a>
+                    <a target="_blank" href="http://help.cnki.net/Live800_1_2.aspx?GroupID=503&amp;PageID=101008&amp;Name=&amp;CookieName=TTKN_OnLine_800">用户建议</a>
+                    <a target="_blank" href="http://piccache.cnki.net/index/CNKIRecruit/index.html">知网招聘</a>
+                </span>
+                <span>© 1998-2018 中国知网（CNKI）</span>
+            </p>
+            <p class="right">
+                <!--可信网站图片LOGO安装开始-->
+                <a id="___szfw_logo___" href="https://ss.knet.cn/verifyseal.dll?sn=e13111111010043364isll000000&amp;a=1&amp;pa=0.08881110103584755" target="_blank">
+                    <img alt="可信网站" src="http://piccache.cnki.net/kdn/index/kns7/nimages/kxwz.jpg" height="33" width="86">
+                </a>
+                <!--可信网站图片LOGO安装结束-->
+                <!--诚信网站图片LOGO安装开始-->
+                <a id="A1" href="https://credit.cecdc.com/CX20140929005220005306.html" target="_blank">
+                    <img alt="诚信网站" src="http://piccache.cnki.net/kdn/index/kns7/nimages/cert.jpg" height="33" width="86">
+                </a>
+                <script type="text/javascript">(function () { document.getElementById('___szfw_logo___').oncontextmenu = function () { return false; } })();</script>
+                <!--诚信网站图片LOGO安装结束-->
+            </p>
+        </div>
+        <div class="b">
+            <span>京 ICP 证 040431 号<a target="_blank" href="http://piccache.cnki.net/index/images/gb/271.jpg">网络出版服务许可证 (总)网出证(京)字第 271 号</a><a target="_blank" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202005012100021">经营性网站备案信息</a> 京公网安备 11010802020460 号</span>
+            <span>《中国学术期刊（光盘版）》电子杂志社有限公司</span>
+            <span>KDN 平台基础技术由 KBASE 11.0 提供.</span>
+        </div>
+    </div>
+    <!--foot-bot-->
+</div>
+<!--footer end-->
+
+<ul class="banner ">
+    <li class="bg1" style="display: block;"></li>
+</ul>
+
+<a class="back-top" href="javascript:void(0);" target="_self" style="display: block;"></a>
+    <!--footer end-->
+
+    
+</body>
+</html>
