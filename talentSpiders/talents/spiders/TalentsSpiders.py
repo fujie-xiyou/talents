@@ -1,16 +1,16 @@
 import scrapy
+from scrapy_redis.spiders import RedisSpider
 import urllib
 
 from talents.items import TalentsItem
 from talents.utils import prerr
 
 
-class Talent(scrapy.spiders.Spider):
+class Talent(RedisSpider):
     name = "talent"
     allowed_domains = ["cnki.net"]
-    start_urls = [
-        "http://cajn.cnki.net/cajn/",
-    ]
+    # start_urls = "http://cajn.cnki.net/cajn/"
+    redis_key = "talent:start_urls"
 
     """
     从首页爬取学科名称，然后拼接成获取期刊列表的链接

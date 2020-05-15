@@ -29,7 +29,7 @@ LOG_LEVEL = 'INFO'
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 0.5
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -94,6 +94,23 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-MONGO_DB_URI = 'mongodb://localhost:27017'
+MONGO_DB_URI = "mongodb://zhou:zhou0520.@zqn.fujie.bid:27017/"
 MONGO_DB_NAME = 'talent_data'
 PROXY_URL = 'http://127.0.0.1:5000/proxy/target/cnki/net'
+
+# 使用scrapy-redis部署分布式爬虫的配置
+# 过滤器
+DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+
+# 调度器
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# 调度状态持久化
+SCHEDULER_PERSIST = True
+
+# 请求调度使用优先队列
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
+
+# redis 使用的端口和地址
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = 6379

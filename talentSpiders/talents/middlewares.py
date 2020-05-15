@@ -8,6 +8,7 @@ import json
 import logging
 import random
 import time
+from datetime import datetime
 
 import requests
 from scrapy import signals
@@ -125,10 +126,13 @@ class ProxyMiddleware(object):
             return self.get_random_proxy()
 
     def process_request(self, request, spider):
-        proxy = self.get_random_proxy()
-        if proxy:
-            print('======' + '当前代理IP：%s 当前UA: %s' % (str(proxy), request.headers.get('User-Agent')))
-            request.meta['proxy'] = 'http://{proxy}'.format(proxy=proxy)
+        # proxy = self.get_random_proxy()
+        time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        print('请求时间：%s ======' % time_now + '当前UA: %s' % (request.headers.get('User-Agent')))
+
+        # if proxy:
+        #     print('======' + '当前代理IP：%s 当前UA: %s' % (str(proxy), request.headers.get('User-Agent')))
+        #     request.meta['proxy'] = 'http://{proxy}'.format(proxy=proxy)
         # 阿布云代理
         # request.meta['proxy'] = 'http://http-dyn.abuyun.com:9020'
         # request.headers['Proxy-Authorization'] = 'Basic SEtVSjQyMjNWRzBKRThSRDpBQTNERTBENURDNTMzRTU4'
