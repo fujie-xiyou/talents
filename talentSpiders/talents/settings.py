@@ -112,5 +112,8 @@ SCHEDULER_PERSIST = True
 SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
 # redis 使用的端口和地址
-REDIS_HOST = '127.0.0.1'
+REDIS_HOST = 'zqn.fujie.bid'
 REDIS_PORT = 6379
+REDIS_PARAMS = {
+    'password': 'zhou0520.',
+}
