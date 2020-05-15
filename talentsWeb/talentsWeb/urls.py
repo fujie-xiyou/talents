@@ -3,7 +3,8 @@ from talentsWeb.views import user
 user_patterns = [
     path('login', user.login),
     path('register', user.register),
-    path('myInfo', user.myInfo)
+    path('myInfo', user.myInfo),
+    path('logout', user.logout)
 ]
 
 api_patterns = [

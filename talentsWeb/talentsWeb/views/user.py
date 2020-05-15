@@ -62,3 +62,9 @@ def myInfo(request):
     user = request.session.get('user')
     return user
 
+
+@request_decorator
+@login_decorator
+def logout(request):
+    request.session.clear()
+    return "注销成功"
