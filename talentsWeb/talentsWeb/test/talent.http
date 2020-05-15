@@ -1,0 +1,9 @@
+GET http://localhost:8000/api/talent/fetch/力学
+Accept: application/json
+
+###
+
+GET http://localhost:8000/api/talent/search/?type=2&value=清华&count=5&page=1
+Accept: application/json
+
+###

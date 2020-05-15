@@ -16,6 +16,6 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8000/api/user/myInfo
-Cookie: sessionid=wsog1u6jgr9d2w4r3ejmantvvttszir7; expires=Wed, 20 May 2020 13:58:38 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax
+Cookie: sessionid=cksulhv65s8gaikcuq9svuldweph71l7;
 
 ###
