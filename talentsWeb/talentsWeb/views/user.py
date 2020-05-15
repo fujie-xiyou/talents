@@ -1,8 +1,9 @@
 import re
-
-from talentsWeb.models import User
 from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
 from talentsWeb.utils.FPExceptions import FormException
+from talentsWeb.settings import db
+
+user_col = db["user"]
 
 
 @request_decorator
@@ -15,9 +16,8 @@ def login(request, form_data):
         raise FormException("用户名为空")
     if not password:
         raise FormException('密码为空')
-    try:
-        db_user = User.objects.values().get(username=username)
-    except User.DoesNotExist:
+    db_user = user_col.find_one({"username": username}, {"_id": 0})
+    if not db_user:
         raise FormException('用户不存在')
     if db_user.get('password') != password:
         raise FormException('密码错误')
@@ -45,15 +45,11 @@ def register(request, form_data):
     if not email or not re.match(r'^[A-Za-z0-9\u4e00-\u9fa5.\-_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', email):
         raise FormException('邮箱不合法')
 
-    db_user = User.objects.filter(username=username).all()
-    if len(db_user) > 0:
+    db_user_count = user_col.count_documents({"username": username})
+    if db_user_count > 0:
         raise FormException('用户名已被使用')
-    user = User(username=username, phone=phone, email=email, password=password)
-    try:
-        user.save()
-        return "注册成功"
-    except Exception as e:
-        raise e
+    user_col.insert_one(form_data)
+    return "注册成功"
 
 
 @request_decorator
