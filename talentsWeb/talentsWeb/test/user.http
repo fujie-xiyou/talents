@@ -1,5 +1,4 @@
 ## 注册
-
 POST http://localhost:8000/api/user/register
 Content-Type: application/json
 
@@ -11,11 +10,24 @@ Content-Type: application/json
 POST http://localhost:8000/api/user/login
 Content-Type: application/json
 
-{"username": "fujie", "password": "f447b20a7fcbf53a5d5be013ea0b15af"}
+{"username": "liufujie", "password": "f447b20a7fcbf53a5d5be013ea0b15af"}
 
-###
 
+### 获取信息
 GET http://localhost:8000/api/user/myInfo
-Cookie: sessionid=cksulhv65s8gaikcuq9svuldweph71l7;
+Cookie: sessionid=7x580yvykn53aa4ti6br2xe34pse6j8i;
+
+
+### 修改信息
+POST http://localhost:8000/api/user/update
+Content-Type: application/json
+Cookie: sessionid=7x580yvykn53aa4ti6br2xe34pse6j8i;
+
+{"username": "fujie", "email": "fujie.me@gmail.com", "phone": "15596207602"}
+
+
+### 注销登录
+GET http://localhost:8000/api/user/logout
+Cookie: sessionid=2hkuw2wgzldzy70jt526iayct2ojatfu;
 
 ###

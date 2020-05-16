@@ -4,7 +4,8 @@ user_patterns = [
     path('login', user.login),
     path('register', user.register),
     path('myInfo', user.myInfo),
-    path('logout', user.logout)
+    path('logout', user.logout),
+    path('update', user.update)
 ]
 
 
