@@ -13,6 +13,8 @@ talent_patterns = [
     path('fetch/', talent.fetch_by_cate),
     path('search/<category>', talent.search),
     path('search/', talent.search),
+    path('group/orgn', talent.group_by_orgn),
+    path('group/doma', talent.group_by_doma)
 ]
 
 api_patterns = [

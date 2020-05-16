@@ -1,4 +1,3 @@
-import re
 from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
 from talentsWeb.utils.FPExceptions import FormException
 from talentsWeb.settings import db
@@ -38,5 +37,44 @@ def search(request, category=None):
         "page": page,
         "count": count,
         "talents": talents
+    }
+    return result
+
+
+@request_decorator
+# @login_decorator
+def group_by_orgn(request):
+    """
+    :return: 返回按所在单位分组后人才数量前10的单位名和人才数
+    """
+    group = {"$group": {"_id": "$orgn", "count": {"$sum": 1}}}
+    sort = {"$sort": {"count": -1}}
+    limit = {"$limit": 10}
+    project = {"$project": {"_id": False, "orgn": "$_id", "count": "$count"}}
+    data = list(talent_col.aggregate([group, sort, limit, project]))
+    scale = [{"dataKey": 'count'}]
+    result = {
+        "data": data,
+        "scale": scale
+    }
+    return result
+
+
+@request_decorator
+# @login_decorator
+def group_by_doma(request):
+    """
+    :return: 返回按行业分组后人才数量前10和行业名和人才数
+    """
+    unwind ={"$unwind": "$domas"}
+    group = {"$group": {"_id": "$domas", "count": {"$sum": 1}}}
+    sort = {"$sort": {"count": -1}}
+    limit = {"$limit": 10}
+    project = {"$project": {"_id": False, "doma": "$_id", "count": "$count"}}
+    data = list(talent_col.aggregate([unwind, group, sort, limit, project]))
+    scale = [{"dataKey": 'count'}]
+    result = {
+        "data": data,
+        "scale": scale
     }
     return result
