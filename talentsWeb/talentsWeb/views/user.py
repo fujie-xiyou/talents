@@ -89,10 +89,11 @@ def update(request, form_data):
     if not email or not re.match(r'^[A-Za-z0-9\u4e00-\u9fa5.\-_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', email):
         raise FormException('邮箱不合法')
     new_user["email"] = email
-    db_user_count = user_col.count_documents({"username": username})
-    if db_user_count > 0:
-        raise FormException('用户名已被使用')
     old_username = request.session.get("user").get("username")
+    if username != old_username:
+        db_user_count = user_col.count_documents({"username": username})
+        if db_user_count > 0:
+            raise FormException('用户名已被使用')
     user_col.update({"username": old_username}, {"$set": new_user})
     db_user = user_col.find_one({"username": username}, {"_id": 0})
     del db_user['password']

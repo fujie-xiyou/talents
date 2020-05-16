@@ -23,7 +23,7 @@ POST http://localhost:8000/api/user/update
 Content-Type: application/json
 Cookie: sessionid=7x580yvykn53aa4ti6br2xe34pse6j8i;
 
-{"username": "fujie", "email": "fujie.me@gmail.com", "phone": "15596207602"}
+{"username": "fujie", "email": "fujie.me@gmail.cn", "phone": "15596207602"}
 
 
 ### 注销登录
