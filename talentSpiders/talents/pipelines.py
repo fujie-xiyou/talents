@@ -34,5 +34,9 @@ class MongoDBPipeline(object):
     def process_item(self, item, spider):
         collection = self.db[spider.name]
         post = dict(item) if isinstance(item, Item) else item
-        collection.insert_one(post)
+        try:
+            collection.insert_one(post)
+        except pymongo.errors.DuplicateKeyError:
+            print("*******检测到重复信息 已丢弃: {}".format(post))
+            return
         return item
