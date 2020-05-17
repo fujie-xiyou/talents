@@ -110,6 +110,7 @@ class TalentsDownloaderMiddleware(object):
 
 
 # 代理中间件
+# 暂时没有启用代理 而是用这个中间件在请求之前打印时间戳 在响应被处理之前判断是不是ip被封
 class ProxyMiddleware(object):
     def __init__(self, proxy_url):
         self.logger = logging.getLogger(__name__)
@@ -127,7 +128,7 @@ class ProxyMiddleware(object):
 
     def process_request(self, request, spider):
         # proxy = self.get_random_proxy()
-        time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
+        time_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
         print('请求时间：%s ======' % time_now + '当前UA: %s' % (request.headers.get('User-Agent')))
 
         # if proxy:
@@ -140,7 +141,7 @@ class ProxyMiddleware(object):
     def process_response(self, request, response, spider):
         if response.text == "<script>window.location.href='//www.cnki.net'</script>":
             prerr("!!!!!!!访问过快！ip被封, url: %s" % response.url)
-            time.sleep(1)
+            time.sleep(2)
             return request
         if response.status != 200:
             print("响应失败：状态码：%s " % response.status)
