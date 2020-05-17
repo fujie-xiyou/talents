@@ -128,7 +128,7 @@ def download_with_article(request):
     ]
     data = list(talent_col.aggregate(pipeline))
     for t in data:
-        t['article_num'] = "{}-{}".format(t['article_num'], t['article_num'] + step)
+        t['article_num'] = "{}-{}篇".format(t['article_num'], t['article_num'] + step)
         t['download_num'] = int(t['download_num'])
     result = {
         "data": data,
@@ -136,6 +136,3 @@ def download_with_article(request):
     }
     return result
 
-
-if __name__ == '__main__':
-    download_with_article()
