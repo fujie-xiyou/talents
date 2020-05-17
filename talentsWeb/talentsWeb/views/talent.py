@@ -1,3 +1,4 @@
+import pymongo
 from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
 from talentsWeb.utils.FPExceptions import FormException
 from talentsWeb.settings import db
@@ -66,15 +67,75 @@ def group_by_doma(request):
     """
     :return: 返回按行业分组后人才数量前10和行业名和人才数
     """
-    unwind ={"$unwind": "$domas"}
+    unwind = {"$unwind": "$domas"}
     group = {"$group": {"_id": "$domas", "count": {"$sum": 1}}}
     sort = {"$sort": {"count": -1}}
     limit = {"$limit": 10}
     project = {"$project": {"_id": False, "doma": "$_id", "count": "$count"}}
     data = list(talent_col.aggregate([unwind, group, sort, limit, project]))
     scale = [{"dataKey": 'count'}]
+    position = "doma*count"
+
     result = {
         "data": data,
-        "scale": scale
+        "scale": scale,
+        "position": position
     }
     return result
+
+
+@request_decorator
+# @login_decorator
+def top10(request, sort_field):
+    if sort_field not in ["article_num", "download_num"]:
+        raise FormException("参数错误")
+    data = list(
+        talent_col.find({}, {"_id": 0, "name": 1, sort_field: 1, }).sort(sort_field, pymongo.DESCENDING).limit(10)
+    )
+    scale = [{"dataKey": 'download_num'}]
+    position = "name*download_num"
+    result = {
+        "data": data,
+        "scale": scale,
+        "position": position
+    }
+    return result
+
+
+@request_decorator
+# @login_decorator
+def download_with_article(request):
+    step = 100
+    pipeline = [
+        {
+            "$group": {
+                "_id": {
+                    "$subtract": ["$article_num", {"$mod": ["$article_num", step]}]
+                },
+                "download_num": {"$avg": "$download_num"}
+            }
+        },
+        {
+            "$sort": {"_id": 1}
+        },
+        {
+            "$project": {
+                "_id": False,
+                "article_num": "$_id",
+                "download_num": "$download_num"
+            }
+        }
+    ]
+    data = list(talent_col.aggregate(pipeline))
+    for t in data:
+        t['article_num'] = "{}-{}".format(t['article_num'], t['article_num'] + step)
+        t['download_num'] = int(t['download_num'])
+    result = {
+        "data": data,
+        "position": "article_num*download_num"
+    }
+    return result
+
+
+if __name__ == '__main__':
+    download_with_article()

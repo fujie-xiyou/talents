@@ -15,7 +15,9 @@ talent_patterns = [
     path('search/<category>', talent.search),
     path('search/', talent.search),
     path('group/orgn', talent.group_by_orgn),
-    path('group/doma', talent.group_by_doma)
+    path('group/doma', talent.group_by_doma),
+    path('top10/sort_by/<sort_field>', talent.top10),
+    path('download_with_article', talent.download_with_article)
 ]
 
 api_patterns = [
