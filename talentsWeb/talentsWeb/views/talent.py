@@ -93,7 +93,7 @@ def top10(request, sort_field):
         talent_col.find({}, {"_id": 0, "name": 1, sort_field: 1, }).sort(sort_field, pymongo.DESCENDING).limit(10)
     )
     scale = [{"dataKey": 'download_num'}]
-    position = "name*download_num"
+    position = "name*{}".format(sort_field)
     result = {
         "data": data,
         "scale": scale,
