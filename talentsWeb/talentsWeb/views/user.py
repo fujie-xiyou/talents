@@ -1,6 +1,6 @@
 import re
-from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
-from talentsWeb.utils.FPExceptions import FormException
+from talentsWeb.utils.TalentDecorator import request_decorator, login_decorator, dump_form_data
+from talentsWeb.utils.TalentExceptions import FormException
 from talentsWeb.settings import db
 
 user_col = db["user"]
