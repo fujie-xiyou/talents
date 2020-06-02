@@ -1,6 +1,6 @@
 import re
-from talentsWeb.utils.FPDecorator import request_decorator, login_decorator, dump_form_data
-from talentsWeb.utils.FPExceptions import FormException
+from talentsWeb.utils.TalentDecorator import request_decorator, login_decorator, dump_form_data
+from talentsWeb.utils.TalentExceptions import FormException
 from talentsWeb.settings import db
 
 user_col = db["user"]
@@ -64,3 +64,39 @@ def myInfo(request):
 def logout(request):
     request.session.clear()
     return "注销成功"
+
+
+@request_decorator
+@login_decorator
+@dump_form_data
+def update(request, form_data):
+    new_user = {}
+    username = form_data.get('username')
+    if not username or len(username) < 3 or len(username) > 10:
+        raise FormException('用户名不合法')
+    new_user["username"] = username
+    password = form_data.get('password')
+
+    if password and (len(password) < 6 or len(password) > 50):
+        raise FormException('密码不合法')
+    if password:
+        new_user["password"] = password
+    phone = form_data.get('phone')
+    if not phone or not re.match(r'^[1]([3-9])[0-9]{9}$', phone):
+        raise FormException('手机号不合法')
+    new_user["phone"] = phone
+    email = form_data.get('email')
+    if not email or not re.match(r'^[A-Za-z0-9\u4e00-\u9fa5.\-_]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$', email):
+        raise FormException('邮箱不合法')
+    new_user["email"] = email
+    old_username = request.session.get("user").get("username")
+    if username != old_username:
+        db_user_count = user_col.count_documents({"username": username})
+        if db_user_count > 0:
+            raise FormException('用户名已被使用')
+    user_col.update({"username": old_username}, {"$set": new_user})
+    db_user = user_col.find_one({"username": username}, {"_id": 0})
+    del db_user['password']
+    request.session['user'] = db_user
+
+    return "修改成功"

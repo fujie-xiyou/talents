@@ -1,7 +1,7 @@
 import json
 import sys
-from talentsWeb.utils.FPExceptions import FormException
-from talentsWeb.utils.FPResponse import FPResponse
+from talentsWeb.utils.TalentExceptions import FormException
+from talentsWeb.utils.TalentResponse import TalentResponse
 
 
 def request_decorator(func):
@@ -11,8 +11,8 @@ def request_decorator(func):
         except FormException as e:
             if e.raw_exception:
                 sys.stderr.write(str(e.raw_exception))
-            return FPResponse.failure(e.message)
-        return FPResponse.success(data)
+            return TalentResponse.failure(e.message)
+        return TalentResponse.success(data)
 
     return wrapper
 

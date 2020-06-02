@@ -126,7 +126,7 @@ class ProxyMiddleware(object):
         # ip被封的时候响应是<script>window.location.href='//www.cnki.net'</script>
         if response.text == "<script>window.location.href='//www.cnki.net'</script>":
             prerr("!!!!!!!访问过快！ip被封, url: %s" % response.url)
-            time.sleep(1)
+            time.sleep(2)
             # 重新把请求放回队列
             return request
         if response.status != 200:

@@ -26,7 +26,7 @@ SECRET_KEY = 'fszju!zg(d=k++pv!6ulg8cd44^0#7*#3$e1x8ekhmugs-=o&q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,6 +118,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-mg_client = pymongo.MongoClient("mongodb://localhost:27017/")
+mg_client = pymongo.MongoClient("mongodb://zhou:zhou0520.@zqn.fujie.bid:27017/")
 db = mg_client["talent_data"]
 
