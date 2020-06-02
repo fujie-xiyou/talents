@@ -1,7 +1,6 @@
 import scrapy
 from scrapy_redis.spiders import RedisSpider
-import urllib
-
+import urllib.parse
 from talents.items import TalentsItem
 from talents.utils import prerr
 

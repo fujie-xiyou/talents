@@ -109,43 +109,31 @@ class TalentsDownloaderMiddleware(object):
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
-# 代理中间件
+# 代理中间件（目前打印UA和检测ip被封）
 class ProxyMiddleware(object):
     def __init__(self, proxy_url):
         self.logger = logging.getLogger(__name__)
         self.proxy_url = proxy_url
 
-    def get_random_proxy(self):
-        try:
-            response = requests.get(self.proxy_url)
-            if response.status_code == 200:
-                proxy = response.text
-                return proxy
-        except:
-            print('get proxy again ...')
-            return self.get_random_proxy()
-
+    # 请求前
     def process_request(self, request, spider):
-        # proxy = self.get_random_proxy()
+        # 获取毫秒时间
         time_now = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S.%f')[:-3]
         print('请求时间：%s ======' % time_now + '当前UA: %s' % (request.headers.get('User-Agent')))
 
-        # if proxy:
-        #     print('======' + '当前代理IP：%s 当前UA: %s' % (str(proxy), request.headers.get('User-Agent')))
-        #     request.meta['proxy'] = 'http://{proxy}'.format(proxy=proxy)
-        # 阿布云代理
-        # request.meta['proxy'] = 'http://http-dyn.abuyun.com:9020'
-        # request.headers['Proxy-Authorization'] = 'Basic SEtVSjQyMjNWRzBKRThSRDpBQTNERTBENURDNTMzRTU4'
-
+    # 响应被处理前
     def process_response(self, request, response, spider):
+        # ip被封的时候响应是<script>window.location.href='//www.cnki.net'</script>
         if response.text == "<script>window.location.href='//www.cnki.net'</script>":
             prerr("!!!!!!!访问过快！ip被封, url: %s" % response.url)
             time.sleep(1)
+            # 重新把请求放回队列
             return request
         if response.status != 200:
             print("响应失败：状态码：%s " % response.status)
-            request.meta['proxy'] = 'http://http-dyn.abuyun.com:9020'
-            request.headers['Proxy-Authorization'] = 'Basic SEtVSjQyMjNWRzBKRThSRDpBQTNERTBENURDNTMzRTU4'
+            # 收费的ip代理 ，免费的ip代理要考虑一下ip代理池
+            # request.meta['proxy'] = 'http://http-dyn.abuyun.com:9020'
+            # request.headers['Proxy-Authorization'] = 'Basic SEtVSjQyMjNWRzBKRThSRDpBQTNERTBENURDNTMzRTU4'
             return request
         return response
 

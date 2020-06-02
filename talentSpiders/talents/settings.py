@@ -10,7 +10,7 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'talents'
-
+# 爬虫所在模块
 SPIDER_MODULES = ['talents.spiders']
 NEWSPIDER_MODULE = 'talents.spiders'
 
@@ -18,6 +18,7 @@ NEWSPIDER_MODULE = 'talents.spiders'
 # USER_AGENT = 'talents (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
+# 不遵循robots协议
 ROBOTSTXT_OBEY = False
 
 # 日志级别 CRITICAL, ERROR, WARNING, INFO, DEBUG
@@ -29,12 +30,13 @@ LOG_LEVEL = 'INFO'
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
+# 不启用cookie，因为知网不需要cookie也可以爬取，禁用可以防止网站通过cookie禁止爬取，也可以提高性能
 COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
@@ -55,6 +57,7 @@ COOKIES_ENABLED = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
+    # 禁用内置的UA中间件和ip代理中间件，启用了自己的
     'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': None,
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
     'talents.middlewares.ProxyMiddleware': 556,
@@ -94,7 +97,7 @@ ITEM_PIPELINES = {
 # HTTPCACHE_DIR = 'httpcache'
 # HTTPCACHE_IGNORE_HTTP_CODES = []
 # HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-MONGO_DB_URI = "mongodb://zhou:zhou0520.@zqn.fujie.bid:27017/"
+MONGO_DB_URI = "mongodb://zhou:zhou0520.@120.26.39.87:27017/"
 MONGO_DB_NAME = 'talent_data'
 PROXY_URL = 'http://127.0.0.1:5000/proxy/target/cnki/net'
 
@@ -106,14 +109,17 @@ DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # 调度状态持久化
+# Redis本身是保存内存里（断电会丢失），开启这项配置将会把数据保存磁盘上
 SCHEDULER_PERSIST = True
 
 # 请求调度使用优先队列
 SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.SpiderPriorityQueue'
 
 # redis 使用的端口和地址
-REDIS_HOST = 'zqn.fujie.bid'
+REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
-REDIS_PARAMS = {
-    'password': 'zhou0520.',
-}
+# REDIS_PARAMS = {
+#     'password': 'zhou0520.',
+# }
+
+# redis-cli lpush "talents:start_urls" "http://cajn.cnki.net/cajn/"
